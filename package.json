@@ -1,0 +1,26 @@
+{
+    "name": "treeex-auth-mock-server",
+    "version": "1.0.0",
+    "description": "Mock authentication server for TREEEX frontend development",
+    "main": "mock-auth-server.js",
+    "scripts": {
+        "start": "node mock-auth-server.js",
+        "dev": "nodemon mock-auth-server.js"
+    },
+    "keywords": [
+        "mock",
+        "auth",
+        "express"
+    ],
+    "author": "TREEEX Team",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5",
+        "body-parser": "^1.20.2",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1"
+    }
+}
