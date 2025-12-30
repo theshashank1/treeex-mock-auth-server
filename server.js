@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 4010;
-const DB_FILE = path.join(__dirname, 'db.json');
+const DB_FILE = path.join(__dirname, 'auth-db.json');
 
 // --- DATABASE MANAGEMENT ---
 

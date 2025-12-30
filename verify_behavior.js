@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const DB_FILE = path.join(__dirname, 'db.json');
+const DB_FILE = path.join(__dirname, 'auth-db.json');
 
 // Helper to make requests
 function request(method, path, body = null, headers = {}) {

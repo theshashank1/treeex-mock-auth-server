@@ -4,24 +4,23 @@ A standalone mock authentication server for frontend development testing.
 
 ## Overview
 
-This mock server replicates the behavior of a real auth API but **without any business logic**, making it perfect for rapid frontend development. It accepts any credentials, generates mock tokens, and persists user data to `db.json`.
+This mock server replicates the behavior of a real auth API but **without any business logic**, making it perfect for rapid frontend development. It accepts any credentials, generates mock tokens, and persists user data to `auth-db.json`.
 
 ## Files
 
-- **`mock-auth-server-standalone.js`** - Main server file (zero npm dependencies)
-- **`mock-auth-server.js`** - Express version (requires npm install)
+- **`server.js`** - Main server file (zero npm dependencies)
 - **`verify_behavior.js`** - Comprehensive test suite
-- **`test_debug.js`** - Simple debug script
-- **`package.json`** - npm dependencies (for Express version)
-- **`db.json`** - Persistent user database (auto-generated)
+- **`package.json`** - Scripts and metadata
+- **`auth-db.json`** - Persistent user database (auto-generated)
 
 ## Quick Start
 
 ### Run the Server
 
 ```bash
-cd Mock_Server
-node mock-auth-server-standalone.js
+npm start
+# OR
+node server.js
 ```
 
 Server starts at: **http://localhost:4010**
@@ -29,6 +28,8 @@ Server starts at: **http://localhost:4010**
 ### Test the Server
 
 ```bash
+npm test
+# OR
 node verify_behavior.js
 ```
 
@@ -37,18 +38,18 @@ node verify_behavior.js
 | Method | Endpoint | Description |
 |:-------|:---------|:------------|
 | POST | `/api/auth/signup` | Create new account |
-| POST | `/api/auth/signin` | Login to account |
+| POST | `/api/auth/signin` | Login to account (returns tokens only) |
 | POST | `/api/auth/refresh` | Refresh access token |
-| GET | `/api/auth/me` | Get current user profile |
+| GET | `/api/auth/me` | Get current extended user profile |
 | GET | `/health` | Health check |
 
 ## Key Features
 
 ✅ **Permissive Authentication** - Accepts ANY credentials  
 ✅ **Zero Dependencies** - Uses only Node.js built-in modules  
-✅ **Persistent Storage** - Saves to `db.json`  
-✅ **CORS Enabled** - Works with any frontend  
-✅ **Mock Behavior** - Perfect for rapid development  
+✅ **Persistent Storage** - Saves to `auth-db.json`  
+✅ **Strict API Contract** - Matches production Python backend schemas  
+✅ **Robust Handling** - Handles query params and invalid JSON correctly  
 
 ## Mock Behavior
 
@@ -80,10 +81,3 @@ curl -X POST http://localhost:4010/api/auth/signin \
 curl -X GET http://localhost:4010/api/auth/me \
   -H "Authorization: Bearer mock_access_token_12345"
 ```
-
-## Notes
-
-- The server does NOT validate credentials
-- All tokens are accepted (no expiration checks)
-- Perfect for frontend development, NOT for production
-- Data persists across server restarts via `db.json`
